@@ -9,7 +9,7 @@ jobs:
       matrix:
         mosquitto-version: [1.5, 1.6, latest]
 
-    name: Start Mosquitto Broker v${{ matrix.mosquitto-version }}
+    name: Start Mosquitto Broker [${{ matrix.mosquitto-version }}]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
