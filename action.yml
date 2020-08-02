@@ -1,0 +1,28 @@
+name: 'Mosquitto MQTT Broker in GitHub Actions'
+description: 'Start a Mosquitto message broker (on default port 1883 & 9001 for WebSockets)'
+
+branding:
+  icon: 'message-square'
+  color: 'red'
+
+inputs:
+  version:
+    description: 'Mosquitto version to use'
+    required: false
+    default: 'latest'
+  port:
+    description: 'Default port (TCP without SSL)'
+    required: false
+    default: '1883'
+  port-websockets:
+    description: 'Port for WebSockets (without SSL)'
+    required: false
+    default: '9001'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version }}
+    - ${{ inputs.port }}
+    - ${{ inputs.port-websockets }}
