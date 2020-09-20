@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v1
   
       - name: Start Mosquitto
-        uses: namoshek/mosquitto-github-action@0.1.0
+        uses: namoshek/mosquitto-github-action@v0.1.0
         with:
           version: '1.6'
   
