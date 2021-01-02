@@ -1,20 +1,25 @@
 name: Start Mosquitto Broker
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
-  redis-action:
+  test-broker:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        mosquitto-version: [1.5, 1.6, latest]
+        version: [1.5, 1.6, 2.0, latest]
 
-    name: Start Mosquitto Broker [${{ matrix.mosquitto-version }}]
+    name: Start Mosquitto Broker [${{ matrix.version }}]
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Start Mosquitto Broker
         uses: ./
         with:
-          version: ${{ matrix.mosquitto-version }}
+          version: ${{ matrix.version }}

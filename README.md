@@ -27,10 +27,10 @@ jobs:
 
     steps:
       - name: Git checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
   
       - name: Start Mosquitto
-        uses: namoshek/mosquitto-github-action@v0.1.0
+        uses: namoshek/mosquitto-github-action@v0.2.0
         with:
           version: '1.6'
   
