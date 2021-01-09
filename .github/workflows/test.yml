@@ -1,4 +1,4 @@
-name: Start Mosquitto Broker
+name: Test Action
 
 on:
   push:
@@ -9,17 +9,19 @@ on:
 
 jobs:
   test-broker:
+    name: Test Mosquitto Docker image version [${{ matrix.version }}]
+
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        version: [1.5, 1.6, 2.0, latest]
+        version: ['1.5', '1.6', '2.0', 'latest']
 
-    name: Start Mosquitto Broker [${{ matrix.version }}]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Start Mosquitto Broker
+      - name: Start Mosquitto
         uses: ./
         with:
           version: ${{ matrix.version }}
