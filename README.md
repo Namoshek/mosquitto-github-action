@@ -48,8 +48,10 @@ Currently, the following parameters are supported:
 | `version` | `latest` | An image tag of the [eclipse-mosquitto](`https://hub.docker.com/_/eclipse-mosquitto`) Docker image |
 | `ports`   | `1883:1883`   | Port mappings in a [host]:[container] format, delimited by spaces (example: "1883:1883 8883:8883") |
 | `certificates` | -   | Absolute path to a directory containing certificate files which can be referenced in the config (the folder is mounted under `/mosquitto-certs` in the container) |
-| `config`  | -        | Absolute path to the `mosquitto.conf` configuration file to use |
+| `config`  | -        | Absolute path to a custom `mosquitto.conf` configuration file to use |
 | `container-name` | `mosquitto` | The name of the spawned Docker container (can be used as hostname when accessed from other containers) |
+
+All parameters are optional. If no `certificates` are given, no volume is mounted. If no `config` is given, the default Mosquitto config is used.
 
 ## License
 
