@@ -22,6 +22,10 @@ inputs:
     description: 'Absolute path to the mosquitto.conf configuration file to use'
     required: false
     default: ''
+  password-file:
+    description: 'Absolute path to the mosquitto.passwd password file to use'
+    required: false
+    default: ''
   container-name:
     description: 'The name of the spawned Docker container (can be used as hostname when accessed from other containers)'
     required: false
@@ -35,4 +39,5 @@ runs:
     - ${{ inputs.ports }}
     - ${{ inputs.certificates }}
     - ${{ inputs.config }}
+    - ${{ inputs.password-file }}
     - ${{ inputs.container-name }}

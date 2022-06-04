@@ -36,6 +36,7 @@ jobs:
           ports: '1883:1883 8883:8883'
           certificates: ${{ github.workspace }}/.ci/tls-certificates
           config: ${{ github.workspace }}/.ci/mosquitto.conf
+          password-file: ${{ github.workspace}}/.ci/mosquitto.passwd
           container-name: 'mqtt'
   
       - run: test
@@ -49,6 +50,7 @@ Currently, the following parameters are supported:
 | `ports`   | `1883:1883`   | Port mappings in a [host]:[container] format, delimited by spaces (example: "1883:1883 8883:8883") |
 | `certificates` | -   | Absolute path to a directory containing certificate files which can be referenced in the config (the folder is mounted under `/mosquitto-certs` in the container) |
 | `config`  | -        | Absolute path to a custom `mosquitto.conf` configuration file to use |
+| `password-file` | -  | Absolute path to a custom `mosquitto.passwd` password file which will be mounted at `/mosquitto/config/mosquitto.passwd` |
 | `container-name` | `mosquitto` | The name of the spawned Docker container (can be used as hostname when accessed from other containers) |
 
 All parameters are optional. If no `certificates` are given, no volume is mounted. If no `config` is given, the default Mosquitto config is used.
